@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -12,6 +13,7 @@ public class LoginPage
 	@FindBy(xpath="//input[@type='submit']")public WebElement clickNext;
 	@FindBy(xpath="//input[@type='password']")public WebElement password;
 	@FindBy(xpath="//input[@type='submit']")public WebElement nextButton;
+	@FindBy(xpath="//div[@class='nav-line-1-container']/parent::a") public WebElement signIn;
 	
 	
 	//constructor method
@@ -41,5 +43,10 @@ public class LoginPage
 		{
 			nextButton.click();
 			Thread.sleep(5000);
+		}
+		public void moveToSiginElement(RemoteWebDriver driver)
+		{
+			Actions act =new Actions(driver);
+			act.moveToElement(signIn).perform();
 		}
 }
